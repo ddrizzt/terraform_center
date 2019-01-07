@@ -5,3 +5,5 @@ cd /mnt/ && unzip wechat-oa-master.zip
 mv /mnt/gdoawechat-master /mnt/wechat-oa-master
 cd /mnt/wechat-oa-master && chmod +x *.sh
 /mnt/wechat-oa-master/deploy_all.sh
+
+

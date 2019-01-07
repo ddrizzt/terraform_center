@@ -7,7 +7,7 @@ variable "subnet_id" {
 }
 
 variable "vpc_security_group_ids" {
-  description = "ist of secgroup ids to attach to the instance"
+  description = "list of secgroup ids to attach to the instance"
   default = []
 }
 

@@ -54,3 +54,7 @@ resource "aws_instance" "ec2" {
     "Environment", "${var.environment}",
   ), var.extra_tags)}"
 }
+
+output "instance_id" {
+  value = "${aws_instance.ec2.id}"
+}
