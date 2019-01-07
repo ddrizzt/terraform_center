@@ -1,5 +1,5 @@
 variable "aws_region" {
-  default = "cn-north-1"
+  default = "us-west-2"
 }
 
 variable "subnet_id" {
