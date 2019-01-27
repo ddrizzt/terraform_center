@@ -3,8 +3,9 @@
 *.pyc
 *.jar
 .terraform/*
+*.zip
 *.tfvars
-*.tfstat
+*.tfstate
 *.lock
 *.backup
 
