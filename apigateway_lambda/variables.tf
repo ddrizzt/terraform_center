@@ -10,7 +10,7 @@ variable "region" {
 
 variable "apigw_name" {
   type = "string"
-  default = "eason_tester1"
+  default = "eason_tester02"
 }
 
 

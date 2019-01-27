@@ -17,7 +17,6 @@ data "archive_file" "zip" {
 
 data "aws_caller_identity" "current" {}
 
-
 data "aws_iam_policy_document" "policy" {
   statement {
     sid = ""
@@ -32,6 +31,14 @@ data "aws_iam_policy_document" "policy" {
     actions = [
       "sts:AssumeRole"]
   }
+}
+
+resource "random_string" "apigw_suffix" {
+  length  = 6
+  upper   = false
+  lower   = true
+  number  = true
+  special = false
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
@@ -51,7 +58,7 @@ resource "aws_lambda_function" "lambda" {
 }
 
 resource "aws_api_gateway_rest_api" "apigateway" {
-  name = "${var.apigw_name}"
+  name = "${var.apigw_name}_${random_string.apigw_suffix.result}"
   endpoint_configuration {
     types = [
       "REGIONAL"]
@@ -66,7 +73,7 @@ resource "aws_api_gateway_resource" "apigw_resource" {
 
 resource "aws_api_gateway_authorizer" "apigw_author" {
   rest_api_id = "${aws_api_gateway_rest_api.apigateway.id}"
-  name = "authorizer2lambda"
+  name = "authorizer2lambda_${random_string.apigw_suffix.result}"
   type = "TOKEN"
   authorizer_uri = "arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:${var.region}:${data.aws_caller_identity.current.account_id}:function:${aws_lambda_function.lambda.function_name}/invocations"
   identity_validation_expression = ".{0,}"

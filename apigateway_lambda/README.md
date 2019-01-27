@@ -1,10 +1,13 @@
-Create a new APIGateway and using lambda do the authorization and proxy to http://petstore-demo-endpoint.execute-api.com/petstore/pets/{proxy}
+##Overview
+Create a new APIGateway and using lambda do the authorization. And proxy to http://petstore-demo-endpoint.execute-api.com/petstore/pets/{proxy}
 
-#Steps:
+###Steps:
 terraform init
+
 terraform plan
+
 terraform apply -auto-approve
 
-#Destroy
+###Destroy
 terraform destroy -auto-approve
 
