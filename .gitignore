@@ -2,3 +2,9 @@
 *.class
 *.pyc
 *.jar
+.terraform/*
+*.tfvars
+*.tfstat
+*.lock
+*.backup
+
