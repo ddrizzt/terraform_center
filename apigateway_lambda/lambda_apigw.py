@@ -48,7 +48,7 @@ def lambda_handler(event, context):
     policy.restApiId = apiGatewayArnTmp[0]
     policy.region = tmp[3]
     policy.stage = apiGatewayArnTmp[1]
-    if auth_token.lower() == 'open sesame':
+    if auth_token.strip().startswith('Bearer '):
         policy.allowMethod(HttpVerb.ALL, '/*')
     else:
         policy.denyAllMethods()
