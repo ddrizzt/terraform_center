@@ -1,6 +1,6 @@
 variable "profile" {
   type = "string"
-  default = "eason"
+  default = "default"
 }
 
 variable "region" {
