@@ -1,0 +1,11 @@
+global:
+  name: consul
+connectInject:
+  enabled: true
+controller:
+  enabled: true
+ui:
+  enabled: true
+server:
+  replicas: 2
+

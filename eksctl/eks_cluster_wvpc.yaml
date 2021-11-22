@@ -1,0 +1,36 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: demo1
+  region: ap-southeast-1
+
+
+vpc:
+  id: "vpc-0383480aa5e5b4372"
+  subnets:
+    private:
+      ap-southeast-1a:
+          id: "subnet-0f8842b30d9cb5773"
+      ap-southeast-1b:
+          id: "subnet-083926247b3966880"
+    public:
+      ap-southeast-1a:
+          id: "subnet-0a15057c0d62a0bbc"
+      ap-southeast-1b:
+          id: "subnet-004a649033b07821b"
+
+
+managedNodeGroups:
+  - name: demo1-ng1
+    instanceType: t3.medium
+    desiredCapacity: 2
+    volumeSize: 30
+    amiFamily: AmazonLinux2
+    privateNetworking: false
+    # ami: ami-073998ba87e205747
+    ssh: # use existing EC2 key
+      publicKeyName: eason_person
+    tags:
+      kubernetes.io/cluster/demo1: owned
+

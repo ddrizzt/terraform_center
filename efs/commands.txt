@@ -1,0 +1,20 @@
+kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.0"
+
+##!!! Change the efs-pvc.yml config
+
+kubectl get pvc -n storage
+kubectl get pv
+
+
+kubectl apply -f efs-pvc.yaml
+kubectl apply -f efs-writer.yaml
+kubectl apply -f efs-reader.yaml
+
+kubectl get pods -n storage
+
+kubectl exec -it efs-writer -n storage -- tail /shared/out.txt
+
+kubectl exec -it efs-writer -n storage -- mkdir /shared/eason
+kubectl exec -it efs-writer -n storage -- chown 1000:1000 /shared/eason
+kubectl exec -it efs-writer -n storage -- ls -al /shared/eason/
+

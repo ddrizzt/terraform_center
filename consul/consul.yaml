@@ -1,0 +1,4 @@
+# Configure global settings in this section.
+server:
+  # Specify three servers that wait until all are healthy to bootstrap the Consul cluster.
+  replicas: 2
